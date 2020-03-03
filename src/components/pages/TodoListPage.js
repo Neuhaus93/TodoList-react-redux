@@ -1,7 +1,15 @@
 import React from "react";
 
+import AddBar from "../AddBar";
+import Todo from "../Todo";
+
 const TodoListPage = () => {
-  return <div>Todo List Page</div>;
+  return (
+    <div className="container" style={{ marginTop: "20px" }}>
+      <AddBar />
+      <Todo />
+    </div>
+  );
 };
 
 export default TodoListPage;
