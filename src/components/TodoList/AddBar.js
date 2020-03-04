@@ -1,7 +1,7 @@
 import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
 
-import { addTodo } from "../actions";
+import { addTodo } from "../../actions";
 
 class AddBar extends React.Component {
   renderTextInput = ({ input }) => {

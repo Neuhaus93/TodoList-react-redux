@@ -1,21 +1,35 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
-import { ActionTypes } from "../actions";
+import { ActionTypes, FilterTypes } from "../actions";
 
 const startingTodo = [
   {
-    text: "Testando essa porra",
+    text: "Tarefa não concluída #1",
     time: "02:30",
     date: "2000-06-02",
     id: 0,
     isCompleted: false
   },
   {
-    text: "Testando novamente essa porra",
+    text: "Tarefa não concluída #2",
+    time: "05:50",
+    date: "2020-06-02",
+    id: 1,
+    isCompleted: false
+  },
+  {
+    text: "Tarefa concluída #1",
     time: "10:45",
     date: "2020-10-15",
-    id: 1,
+    id: 2,
+    isCompleted: true
+  },
+  {
+    text: "Tarefa concluída #2",
+    time: "15:20",
+    date: "2015-10-22",
+    id: 3,
     isCompleted: true
   }
 ];
@@ -46,7 +60,18 @@ const todos = (state = startingTodo, action) => {
   }
 };
 
+const visibilityFilter = (state = FilterTypes.SHOW_ALL, action) => {
+  switch (action.type) {
+    case ActionTypes.SET_VISIBILITY_FILTER:
+      return action.filter;
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   form: formReducer,
-  todos
+  todos,
+  visibilityFilter
 });

@@ -12,7 +12,12 @@ class Todo extends React.Component {
             className="input-group-text"
             id="basic-addon1"
           >
-            <i id="checkbox" className="far fa-square"></i>
+            <i
+              id="checkbox"
+              className={
+                this.props.isCompleted ? "far fa-check-square" : "far fa-square"
+              }
+            ></i>
           </span>
         </div>
         <input

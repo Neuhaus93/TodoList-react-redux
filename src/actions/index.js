@@ -1,4 +1,4 @@
-let nextTodoId = 2;
+let nextTodoId = 4;
 
 export const addTodo = todoInfo => {
   return {
@@ -10,10 +10,10 @@ export const addTodo = todoInfo => {
   };
 };
 
-// export const setVisibilityFilter = filter => ({
-//   type: ActionTypes.VISIBILITY_FILTER,
-//   filter
-// })
+export const setVisibilityFilter = filter => ({
+  type: ActionTypes.SET_VISIBILITY_FILTER,
+  filter
+});
 
 export const toggleTodo = id => ({
   type: ActionTypes.TOGGLE_TODO,
@@ -22,6 +22,12 @@ export const toggleTodo = id => ({
 
 export const ActionTypes = {
   ADD_TODO: "ADD_TODO",
-  VISIBILITY_FILTER: "VISIBILITY_FILTER",
-  TOGGLE_TODO: "TOGGLE_TODO"
+  TOGGLE_TODO: "TOGGLE_TODO",
+  SET_VISIBILITY_FILTER: "SET_VISIBILITY_FILTER"
+};
+
+export const FilterTypes = {
+  SHOW_ALL: "SHOW_ALL",
+  SHOW_ACTIVE: "SHOW_ACTIVE",
+  SHOW_COMPLETED: "SHOW_COMPLETED"
 };
