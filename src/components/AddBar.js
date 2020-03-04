@@ -1,6 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 
+import { addTodo } from "../actions";
+
 class AddBar extends React.Component {
   renderTextInput = ({ input }) => {
     return (
@@ -51,8 +53,10 @@ class AddBar extends React.Component {
     );
   };
 
-  onSubmit(formValues) {
-    console.log(formValues);
+  onSubmit(formProps, dispatch) {
+    console.log(formProps);
+    if (formProps.todoText == null || !formProps.todoText.trim()) return;
+    dispatch(addTodo(formProps));
   }
 
   render() {
@@ -68,6 +72,9 @@ class AddBar extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: "createTodo"
-})(AddBar);
+export default reduxForm(
+  {
+    form: "createTodo"
+  },
+  { addTodo }
+)(AddBar);

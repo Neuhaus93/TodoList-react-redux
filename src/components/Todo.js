@@ -2,7 +2,6 @@ import React from "react";
 
 class Todo extends React.Component {
   isCompleted = false;
-  text = "Testing this shit!";
 
   todoText = () => (
     <div className="col-8">
@@ -22,6 +21,7 @@ class Todo extends React.Component {
           style={{
             textDecoration: this.isCompleted ? "line-through" : "none"
           }}
+          value={this.props.text}
         ></input>
       </div>
     </div>
@@ -29,7 +29,13 @@ class Todo extends React.Component {
 
   todoTime = () => (
     <div className="col">
-      <input type="time" className="form-control" id="hour" name="hour" />
+      <input
+        type="time"
+        className="form-control"
+        id="hour"
+        name="hour"
+        value={this.props.time}
+      />
     </div>
   );
 
@@ -40,6 +46,7 @@ class Todo extends React.Component {
         className="form-control"
         id="birthday"
         name="birthday"
+        value={this.props.date}
       />
     </div>
   );
