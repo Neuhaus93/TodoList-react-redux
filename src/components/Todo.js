@@ -1,14 +1,14 @@
 import React from "react";
 
 class Todo extends React.Component {
-  isCompleted = false;
+  // isCompleted = false;
 
   todoText = () => (
     <div className="col-8">
       <div className="input-group">
         <div className="input-group-prepend">
           <span
-            // onClick={onClick}
+            onClick={this.props.onClick}
             className="input-group-text"
             id="basic-addon1"
           >
@@ -19,9 +19,10 @@ class Todo extends React.Component {
           type="text"
           className="form-control"
           style={{
-            textDecoration: this.isCompleted ? "line-through" : "none"
+            textDecoration: this.props.isCompleted ? "line-through" : "none"
           }}
           value={this.props.text}
+          readOnly
         ></input>
       </div>
     </div>
@@ -35,6 +36,7 @@ class Todo extends React.Component {
         id="hour"
         name="hour"
         value={this.props.time}
+        readOnly
       />
     </div>
   );
@@ -47,6 +49,7 @@ class Todo extends React.Component {
         id="birthday"
         name="birthday"
         value={this.props.date}
+        readOnly
       />
     </div>
   );

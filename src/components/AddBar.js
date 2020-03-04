@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reset, Field, reduxForm } from "redux-form";
 
 import { addTodo } from "../actions";
 
@@ -57,6 +57,7 @@ class AddBar extends React.Component {
     console.log(formProps);
     if (formProps.todoText == null || !formProps.todoText.trim()) return;
     dispatch(addTodo(formProps));
+    dispatch(reset("createTodo"));
   }
 
   render() {
