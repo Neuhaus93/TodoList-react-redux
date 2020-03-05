@@ -1,5 +1,7 @@
 import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { tryLoggingIn } from "../../actions";
 
@@ -35,11 +37,30 @@ class SignInPage extends React.Component {
     );
   };
 
-  onSubmit(formProps, dispatch) {
-    console.log(formProps);
-    dispatch(tryLoggingIn(formProps));
-    dispatch(reset("signInForm"));
-  }
+  onSubmit = (formProps, dispatch) => {
+    console.log(formProps, this.props);
+
+    const isSignedIn = () =>
+      new Promise((res, rej) => {
+        dispatch(tryLoggingIn(formProps));
+        res();
+      });
+
+    isSignedIn().then(() => {
+      if (this.props.isSignedIn) {
+        this.props.history.push("/todos");
+      } else {
+        dispatch(reset("signInForm"));
+      }
+    });
+
+    // dispatch(tryLoggingIn(formProps));
+    // if (this.props.isSignedIn) {
+    //   this.props.history.push("/todos");
+    // } else {
+    //   dispatch(reset("signInForm"));
+    // }
+  };
 
   render() {
     return (
@@ -73,10 +94,14 @@ const validate = formValues => {
   return errors;
 };
 
+const mapStateToProps = state => ({
+  isSignedIn: state.userActions.isSignedIn
+});
+
 export default reduxForm(
   {
     form: "signInForm",
     validate
   },
   { tryLoggingIn }
-)(SignInPage);
+)(connect(mapStateToProps)(SignInPage));

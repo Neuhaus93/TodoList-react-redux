@@ -29,12 +29,17 @@ export const tryLoggingIn = loginInfo => ({
   password: loginInfo.loginPassword
 });
 
+export const tryLogginOut = () => ({
+  type: ActionTypes.TRY_LOGGIN_OUT
+});
+
 export const ActionTypes = {
   ADD_TODO: "ADD_TODO",
   TOGGLE_TODO: "TOGGLE_TODO",
   SET_VISIBILITY_FILTER: "SET_VISIBILITY_FILTER",
   ADD_USER: "ADD_USER",
-  TRY_LOGGIN_IN: "TRY_LOGGIN_IN"
+  TRY_LOGGIN_IN: "TRY_LOGGIN_IN",
+  TRY_LOGGIN_OUT: "TRY_LOGGIN_OUT"
 };
 
 export const FilterTypes = {

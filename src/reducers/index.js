@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
 import { ActionTypes, FilterTypes } from "../actions";
-import authReducer from "./authReducer";
+import { userActions } from "./authReducer";
 
 const STARTING_TODOS_EX = [
   {
@@ -92,5 +92,5 @@ export default combineReducers({
   form: formReducer,
   todos,
   visibilityFilter,
-  authReducer
+  userActions
 });
