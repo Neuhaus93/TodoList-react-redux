@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
 import { ActionTypes, FilterTypes } from "../actions";
-import { userActions } from "./authReducer";
+import { userActions, userDatabase } from "./authReducer";
 
 const STARTING_TODOS_EX = [
   {
@@ -34,23 +34,6 @@ const STARTING_TODOS_EX = [
     isCompleted: true
   }
 ];
-
-// const users = (state = STARTING_USERS_EX, action) => {
-//   switch (action.type) {
-//     case ActionTypes.ADD_USER:
-//       return [
-//         ...state,
-//         {
-//           email: action.email,
-//           userName: action.userName,
-//           password: action.password
-//         }
-//       ];
-
-//     default:
-//       return state;
-//   }
-// };
 
 const todos = (state = STARTING_TODOS_EX, action) => {
   switch (action.type) {
@@ -92,5 +75,6 @@ export default combineReducers({
   form: formReducer,
   todos,
   visibilityFilter,
-  userActions
+  userActions,
+  userDatabase
 });

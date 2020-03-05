@@ -1,8 +1,6 @@
 import React from "react";
 
 class Todo extends React.Component {
-  // isCompleted = false;
-
   todoText = () => (
     <div className="col-8">
       <div className="input-group">

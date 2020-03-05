@@ -2,9 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Auth from "./Auth";
+import { tryLogginOut } from "../actions";
 
-const Header = ({ userName, isSignedIn }) => {
+const Header = ({ userName, isSignedIn, onClick }) => {
+  const logOutButton = (
+    <Link
+      to="/"
+      type="button"
+      onClick={onClick}
+      className="btn btn-danger my-2 my-sm-0"
+      style={{ visibility: `${isSignedIn ? "" : "hidden"}` }}
+    >
+      Log out
+    </Link>
+  );
+
   return (
     <nav className="navbar navbar-dark bg-dark d-flex justify-content-around">
       {isSignedIn ? (
@@ -17,7 +29,7 @@ const Header = ({ userName, isSignedIn }) => {
         </Link>
       )}
       <span className="navbar-brand">{userName}</span>
-      <Auth />
+      <span>{logOutButton}</span>
     </nav>
   );
 };
@@ -27,4 +39,8 @@ const mapStateToProps = state => ({
   userName: state.userActions.userName
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  onClick: () => dispatch(tryLogginOut())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,6 +1,5 @@
 import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { tryLoggingIn } from "../../actions";
