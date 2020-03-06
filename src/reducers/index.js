@@ -6,7 +6,7 @@ import { userActions, userDatabase } from "./authReducer";
 
 const STARTING_TODOS_EX = [
   {
-		userId: 0,
+    userId: 0,
     text: "Usuário 0 - Tarefa #1",
     time: "02:30",
     date: "2000-06-02",
@@ -14,7 +14,7 @@ const STARTING_TODOS_EX = [
     isCompleted: false
   },
   {
-		userId: 0,
+    userId: 0,
     text: "Usuário 0 - Tarefa #2",
     time: "05:50",
     date: "2020-06-02",
@@ -22,7 +22,7 @@ const STARTING_TODOS_EX = [
     isCompleted: false
   },
   {
-		userId: 0,
+    userId: 0,
     text: "Usuário 0 - Tarefa #3",
     time: "10:45",
     date: "2020-10-15",
@@ -30,7 +30,7 @@ const STARTING_TODOS_EX = [
     isCompleted: true
   },
   {
-		userId: 1,
+    userId: 1,
     text: "Usuário 1 - Tarefa #1",
     time: "15:20",
     date: "2015-10-22",
@@ -38,7 +38,7 @@ const STARTING_TODOS_EX = [
     isCompleted: true
   },
   {
-		userId: 2,
+    userId: 2,
     text: "Usuário 2 - Tarefa #1",
     time: "15:20",
     date: "2015-10-22",
@@ -53,6 +53,7 @@ const todos = (state = STARTING_TODOS_EX, action) => {
       return [
         ...state,
         {
+          userId: action.userId,
           text: action.text,
           time: action.time,
           date: action.date,

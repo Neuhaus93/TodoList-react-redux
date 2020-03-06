@@ -20,9 +20,15 @@ const Header = ({ userName, isSignedIn, onClick }) => {
   return (
     <nav className="navbar navbar-dark bg-dark d-flex justify-content-around">
       {isSignedIn ? (
-        <a className="navbar-brand" href="#">
+        <button
+          className="navbar-brand link-button"
+          style={{
+            backgroundColor: "transparent",
+            border: "none"
+          }}
+        >
           TodoList App
-        </a>
+        </button>
       ) : (
         <Link to="/" className="navbar-brand">
           TodoList App
