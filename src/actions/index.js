@@ -3,10 +3,11 @@ let nextUserId = 3;
 
 export const addTodo = todoInfo => ({
   type: ActionTypes.ADD_TODO,
+	userId: todoInfo.userId,
   text: todoInfo.todoText,
   time: todoInfo.todoTime,
   date: todoInfo.todoDate,
-  id: nextTodoId++
+  todoId: nextTodoId++
 });
 
 export const setVisibilityFilter = filter => ({
@@ -16,7 +17,7 @@ export const setVisibilityFilter = filter => ({
 
 export const toggleTodo = id => ({
   type: ActionTypes.TOGGLE_TODO,
-  id
+  todoId: id
 });
 
 export const addUser = userInfo => ({

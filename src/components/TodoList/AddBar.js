@@ -1,5 +1,6 @@
 import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
 
 import { addTodo } from "../../actions";
 
@@ -53,12 +54,13 @@ class AddBar extends React.Component {
     );
   };
 
-  onSubmit(formProps, dispatch) {
-    console.log(formProps);
+  onSubmit = (formProps, dispatch) => {
+		const newProps = {...formProps, userId: this.props.userId};
+    console.log(newProps);
     if (formProps.todoText == null || !formProps.todoText.trim()) return;
-    dispatch(addTodo(formProps));
+    dispatch(addTodo(newProps));
     dispatch(reset("createTodo"));
-  }
+	}
 
   render() {
     return (
@@ -73,9 +75,13 @@ class AddBar extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+	userId: state.userActions.userId
+})
+
 export default reduxForm(
   {
     form: "createTodo"
   },
   { addTodo }
-)(AddBar);
+)(connect(mapStateToProps)(AddBar));

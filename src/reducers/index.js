@@ -6,31 +6,43 @@ import { userActions, userDatabase } from "./authReducer";
 
 const STARTING_TODOS_EX = [
   {
-    text: "Tarefa #1",
+		userId: 0,
+    text: "Usuário 0 - Tarefa #1",
     time: "02:30",
     date: "2000-06-02",
-    id: 0,
+    todoId: 0,
     isCompleted: false
   },
   {
-    text: "Tarefa #2",
+		userId: 0,
+    text: "Usuário 0 - Tarefa #2",
     time: "05:50",
     date: "2020-06-02",
-    id: 1,
+    todoId: 1,
     isCompleted: false
   },
   {
-    text: "Tarefa #5",
+		userId: 0,
+    text: "Usuário 0 - Tarefa #3",
     time: "10:45",
     date: "2020-10-15",
-    id: 2,
+    todoId: 2,
     isCompleted: true
   },
   {
-    text: "Tarefa #4",
+		userId: 1,
+    text: "Usuário 1 - Tarefa #1",
     time: "15:20",
     date: "2015-10-22",
-    id: 3,
+    todoId: 3,
+    isCompleted: true
+  },
+  {
+		userId: 2,
+    text: "Usuário 2 - Tarefa #1",
+    time: "15:20",
+    date: "2015-10-22",
+    todoId: 3,
     isCompleted: true
   }
 ];
@@ -44,14 +56,14 @@ const todos = (state = STARTING_TODOS_EX, action) => {
           text: action.text,
           time: action.time,
           date: action.date,
-          id: action.id,
+          todoId: action.todoId,
           isCompleted: false
         }
       ];
 
     case ActionTypes.TOGGLE_TODO:
       return state.map(todo =>
-        todo.id === action.id
+        todo.todoId === action.todoId
           ? { ...todo, isCompleted: !todo.isCompleted }
           : todo
       );
