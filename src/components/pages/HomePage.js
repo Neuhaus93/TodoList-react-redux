@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <div className="jumbotron">
-        <h1 className="display-5 text-center">Testando</h1>
+        <h1 className="display-5 text-center">TodoList App</h1>
         <p className="lead text-center">
           Seja bem vindo ao aplicativo de tarefas
         </p>
