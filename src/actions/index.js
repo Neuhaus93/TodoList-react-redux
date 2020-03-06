@@ -3,7 +3,7 @@ let nextUserId = 3;
 
 export const addTodo = todoInfo => ({
   type: ActionTypes.ADD_TODO,
-	userId: todoInfo.userId,
+  userId: todoInfo.userId,
   text: todoInfo.todoText,
   time: todoInfo.todoTime,
   date: todoInfo.todoDate,
@@ -22,7 +22,7 @@ export const toggleTodo = id => ({
 
 export const addUser = userInfo => ({
   type: ActionTypes.ADD_USER,
-  id: nextUserId++,
+  userId: nextUserId++,
   userInfo
 });
 

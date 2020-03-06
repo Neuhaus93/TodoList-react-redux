@@ -37,7 +37,7 @@ class SignInPage extends React.Component {
   };
 
   onSubmit = (formProps, dispatch) => {
-    console.log(formProps, this.props);
+    console.log(formProps);
 
     const isSignedIn = () =>
       new Promise((res, rej) => {
@@ -52,13 +52,6 @@ class SignInPage extends React.Component {
         dispatch(reset("signInForm"));
       }
     });
-
-    // dispatch(tryLoggingIn(formProps));
-    // if (this.props.isSignedIn) {
-    //   this.props.history.push("/todos");
-    // } else {
-    //   dispatch(reset("signInForm"));
-    // }
   };
 
   render() {

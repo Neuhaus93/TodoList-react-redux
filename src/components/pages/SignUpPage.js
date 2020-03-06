@@ -1,40 +1,69 @@
 import React from "react";
-// import { Field, reduxForm } from "redux-form";
+import { reset, Field, reduxForm } from "redux-form";
+
+import { addUser } from "../../actions";
 
 class SignUpPage extends React.Component {
+  renderEmailInput = ({ input }) => {
+    return (
+      <div className="form-group">
+        <label>Email</label>
+        <input
+          {...input}
+          type="email"
+          className="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Insira email"
+        />
+      </div>
+    );
+  };
+
+  renderUsernameInput = ({ input }) => {
+    return (
+      <div className="form-group">
+        <label>Usuario</label>
+        <input
+          {...input}
+          className="form-control"
+          placeholder="Insira nome do usuário"
+        />
+      </div>
+    );
+  };
+
+  renderPasswordInput = ({ input }) => {
+    return (
+      <div className="form-group">
+        <label>Senha</label>
+        <input
+          {...input}
+          type="password"
+          className="form-control"
+          id="exampleInputPassword1"
+          placeholder="Senha"
+        />
+      </div>
+    );
+  };
+
+  onSubmit = (formProps, dispatch) => {
+    console.log(formProps);
+    dispatch(addUser(formProps));
+    this.props.history.push("/auth/signin");
+    dispatch(reset("signUpForm"));
+  };
+
   render() {
     return (
       <div className="container">
         <div className="jumbotron">
           <h1 className="display-6 text-center">Fazer Cadastro</h1>
-          <form>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Insira email"
-              />
-            </div>
-            <div className="form-group">
-              <label>Usuario</label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Insira nome do usuário"
-              />
-            </div>
-            <div className="form-group">
-              <label>Senha</label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Senha"
-              />
-            </div>
+          <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+            <Field name="signUpEmail" component={this.renderEmailInput} />
+            <Field name="signUpUsername" component={this.renderUsernameInput} />
+            <Field name="singUpPassword" component={this.renderPasswordInput} />
             <button type="submit" className="btn btn-primary">
               Cadastre
             </button>
@@ -45,4 +74,6 @@ class SignUpPage extends React.Component {
   }
 }
 
-export default SignUpPage;
+export default reduxForm({
+  form: "signUpForm"
+})(SignUpPage);

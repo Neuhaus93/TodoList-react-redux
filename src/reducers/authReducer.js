@@ -95,7 +95,7 @@ export const userActions = (state = INITIAL_STATE, action) => {
         : state;
 
     case ActionTypes.TRY_LOGGIN_OUT:
-      return { ...state, isSignedIn: false, userName: null, userTodos: null };
+      return { ...state, isSignedIn: false, userName: null, userId: null };
 
     default:
       return state;
@@ -109,9 +109,9 @@ export const userDatabase = (state = INITIAL_USERS, action) => {
         ...state,
         {
           userId: action.userId,
-          email: action.email,
-          userName: action.userName,
-          password: action.password
+          email: action.userInfo.signUpEmail,
+          userName: action.userInfo.signUpUsername,
+          password: action.userInfo.singUpPassword
         }
       ];
 
