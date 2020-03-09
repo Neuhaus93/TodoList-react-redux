@@ -3,7 +3,7 @@ import { ActionTypes } from "../actions";
 const INITIAL_STATE = {
   isSignedIn: false,
   userName: null,
-  userTodos: []
+  userId: null
 };
 
 // const LUCAS_TODOS = [
