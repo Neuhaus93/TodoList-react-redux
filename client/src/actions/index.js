@@ -15,7 +15,24 @@ export const fetchUsers = () => async dispatch => {
 export const toggleTodo = id => async dispatch => {
   const response = await todos.patch(`/todos/${id}`);
 
-  dispatch({ type: ActionTypes.TOGGLE_TODO, payload: response.data });
+  dispatch({
+    type: ActionTypes.TOGGLE_TODO,
+    payload: response.data
+  });
+};
+
+export const createTodo = formValues => async (dispatch, getState) => {
+  const { userId } = getState().auth;
+  const response = await todos.post("/todos", {
+    userId,
+    ...formValues,
+    isCompleted: false
+  });
+
+  dispatch({
+    type: ActionTypes.CREATE_TODO,
+    payload: response.data
+  });
 };
 
 let nextTodoId = 4;
@@ -58,6 +75,7 @@ export const tryLogginOut = () => ({
 
 export const ActionTypes = {
   ADD_TODO: "ADD_TODO",
+  CREATE_TODO: "CREATE_TODO",
   FETCH_TODOS: "FETCH_TODOS",
   FETCH_USERS: "FETCH_USERS",
   TOGGLE_TODO: "TOGGLE_TODO",

@@ -2,7 +2,7 @@ import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 
-import { addTodo } from "../../actions";
+import { fetchTodos, createTodo } from "../../actions";
 
 class AddBar extends React.Component {
   renderTextInput = ({ input }) => {
@@ -54,11 +54,12 @@ class AddBar extends React.Component {
     );
   };
 
-  onSubmit = (formProps, dispatch) => {
+  onSubmit = async (formProps, dispatch) => {
     const newProps = { ...formProps, userId: this.props.userId };
     console.log(newProps);
-    if (formProps.todoText == null || !formProps.todoText.trim()) return;
-    dispatch(addTodo(newProps));
+    if (formProps.text == null || !formProps.text.trim()) return;
+    await dispatch(createTodo(newProps));
+    dispatch(fetchTodos());
     dispatch(reset("createTodo"));
   };
 
@@ -66,9 +67,9 @@ class AddBar extends React.Component {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <div className="form-row align-items-center mb-3">
-          <Field name="todoText" component={this.renderTextInput} />
-          <Field name="todoTime" component={this.renderTimeInput} />
-          <Field name="todoDate" component={this.renderDateInput} />
+          <Field name="text" component={this.renderTextInput} />
+          <Field name="time" component={this.renderTimeInput} />
+          <Field name="date" component={this.renderDateInput} />
         </div>
       </form>
     );
@@ -79,9 +80,6 @@ const mapStateToProps = state => ({
   userId: state.auth.userId
 });
 
-export default reduxForm(
-  {
-    form: "createTodo"
-  },
-  { addTodo }
-)(connect(mapStateToProps)(AddBar));
+export default reduxForm({
+  form: "createTodo"
+})(connect(mapStateToProps, { fetchTodos, createTodo })(AddBar));
