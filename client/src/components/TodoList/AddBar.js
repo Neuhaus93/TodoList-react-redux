@@ -55,12 +55,12 @@ class AddBar extends React.Component {
   };
 
   onSubmit = (formProps, dispatch) => {
-		const newProps = {...formProps, userId: this.props.userId};
+    const newProps = { ...formProps, userId: this.props.userId };
     console.log(newProps);
     if (formProps.todoText == null || !formProps.todoText.trim()) return;
     dispatch(addTodo(newProps));
     dispatch(reset("createTodo"));
-	}
+  };
 
   render() {
     return (
@@ -76,8 +76,8 @@ class AddBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	userId: state.userActions.userId
-})
+  userId: state.auth.userId
+});
 
 export default reduxForm(
   {

@@ -56,26 +56,29 @@ const INITIAL_STATE = {
 
 const INITIAL_USERS = [
   {
-    userId: 0,
     email: "lucas@gmail.com",
     userName: "Lucas",
-    password: "12345"
+    password: "12345",
+    userId: 1000,
+    id: 1
   },
   {
-    userId: 1,
     email: "vitor@gmail.com",
     userName: "Vitor",
-    password: "23456"
+    password: "23456",
+    userId: 1001,
+    id: 2
   },
   {
-    userId: 2,
     email: "fernanda@gmail.com",
     userName: "Fernanda",
-    password: "34567"
+    password: "34567",
+    userId: 1002,
+    id: 3
   }
 ];
 
-export const userActions = (state = INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.TRY_LOGGIN_IN:
       const validUser = INITIAL_USERS.filter(
@@ -102,20 +105,20 @@ export const userActions = (state = INITIAL_STATE, action) => {
   }
 };
 
-export const userDatabase = (state = INITIAL_USERS, action) => {
-  switch (action.type) {
-    case ActionTypes.ADD_USER:
-      return [
-        ...state,
-        {
-          userId: action.userId,
-          email: action.userInfo.signUpEmail,
-          userName: action.userInfo.signUpUsername,
-          password: action.userInfo.singUpPassword
-        }
-      ];
+// export const userDatabase = (state = INITIAL_USERS, action) => {
+//   switch (action.type) {
+//     case ActionTypes.ADD_USER:
+//       return [
+//         ...state,
+//         {
+//           userId: action.userId,
+//           email: action.userInfo.signUpEmail,
+//           userName: action.userInfo.signUpUsername,
+//           password: action.userInfo.singUpPassword
+//         }
+//       ];
 
-    default:
-      return state;
-  }
-};
+//     default:
+//       return state;
+//   }
+// };

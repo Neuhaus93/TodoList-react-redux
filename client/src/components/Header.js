@@ -41,8 +41,8 @@ const Header = ({ userName, isSignedIn, onClick }) => {
 };
 
 const mapStateToProps = state => ({
-  isSignedIn: state.userActions.isSignedIn,
-  userName: state.userActions.userName
+  isSignedIn: state.auth.isSignedIn,
+  userName: state.auth.userName
 });
 
 const mapDispatchToProps = dispatch => ({

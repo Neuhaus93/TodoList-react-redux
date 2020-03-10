@@ -1,4 +1,67 @@
 {
-  "users": [],
-  "todos": []
+  "users": [
+    {
+      "email": "lucas@gmail.com",
+      "userName": "Lucas",
+      "password": "12345",
+      "userId": 1000,
+      "id": 1
+    },
+    {
+      "email": "vitor@gmail.com",
+      "userName": "Vitor",
+      "password": "23456",
+      "userId": 1001,
+      "id": 2
+    },
+    {
+      "email": "fernanda@gmail.com",
+      "userName": "Fernanda",
+      "password": "34567",
+      "userId": 1002,
+      "id": 3
+    }
+  ],
+  "todos": [
+    {
+      "userId": 1000,
+      "text": "Usuário 1000 - Tarefa #1",
+      "time": "02:30",
+      "date": "2000-06-02",
+      "isCompleted": false,
+      "id": 0
+    },
+    {
+      "userId": 1000,
+      "text": "Usuário 1000 - Tarefa #2",
+      "time": "05:50",
+      "date": "2020-06-02",
+      "isCompleted": false,
+      "id": 1
+    },
+    {
+      "userId": 1000,
+      "text": "Usuário 1000 - Tarefa #3",
+      "time": "10:45",
+      "date": "2020-10-15",
+      "isCompleted": true,
+      "id": 2
+    },
+    {
+      "userId": 1001,
+      "text": "Usuário 1001 - Tarefa #1",
+      "time": "15:20",
+      "date": "2015-10-22",
+      "isCompleted": true,
+      "id": 3
+    },
+    {
+      "userId": 1002,
+      "text": "Usuário 1002 - Tarefa #1",
+      "time": "15:20",
+      "date": "2015-10-22",
+      "isCompleted": true,
+      "id": 4
+    }
+  ]
 }

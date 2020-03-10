@@ -2,7 +2,9 @@ import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
 import { ActionTypes, FilterTypes } from "../actions";
-import { userActions, userDatabase } from "./authReducer";
+import authReducer from "./authReducer";
+import todosReducer from "./todosReducer";
+import usersReducer from "./usersReducer";
 
 const STARTING_TODOS_EX = [
   {
@@ -47,32 +49,32 @@ const STARTING_TODOS_EX = [
   }
 ];
 
-const todos = (state = STARTING_TODOS_EX, action) => {
-  switch (action.type) {
-    case ActionTypes.ADD_TODO:
-      return [
-        ...state,
-        {
-          userId: action.userId,
-          text: action.text,
-          time: action.time,
-          date: action.date,
-          todoId: action.todoId,
-          isCompleted: false
-        }
-      ];
+// const todos = (state = STARTING_TODOS_EX, action) => {
+//   switch (action.type) {
+//     case ActionTypes.ADD_TODO:
+//       return [
+//         ...state,
+//         {
+//           userId: action.userId,
+//           text: action.text,
+//           time: action.time,
+//           date: action.date,
+//           todoId: action.todoId,
+//           isCompleted: false
+//         }
+//       ];
 
-    case ActionTypes.TOGGLE_TODO:
-      return state.map(todo =>
-        todo.todoId === action.todoId
-          ? { ...todo, isCompleted: !todo.isCompleted }
-          : todo
-      );
+//     case ActionTypes.TOGGLE_TODO:
+//       return state.map(todo =>
+//         todo.todoId === action.todoId
+//           ? { ...todo, isCompleted: !todo.isCompleted }
+//           : todo
+//       );
 
-    default:
-      return state;
-  }
-};
+//     default:
+//       return state;
+//   }
+// };
 
 const visibilityFilter = (state = FilterTypes.SHOW_ALL, action) => {
   switch (action.type) {
@@ -86,8 +88,11 @@ const visibilityFilter = (state = FilterTypes.SHOW_ALL, action) => {
 
 export default combineReducers({
   form: formReducer,
-  todos,
-  visibilityFilter,
-  userActions,
-  userDatabase
+  // todos,
+  auth: authReducer,
+  todos: todosReducer,
+  users: usersReducer,
+  visibilityFilter
+  // userActions,
+  // userDatabase
 });

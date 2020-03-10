@@ -87,7 +87,7 @@ const validate = formValues => {
 };
 
 const mapStateToProps = state => ({
-  isSignedIn: state.userActions.isSignedIn
+  isSignedIn: state.auth.isSignedIn
 });
 
 export default reduxForm(

@@ -22,8 +22,8 @@ const getVisibleTodos = (todos, userId, filter) => {
 const mapStateToProps = state => ({
   // todos: getVisibleTodos(state.userActions.userTodos, state.visibilityFilter)
   todos: getVisibleTodos(
-    state.todos,
-    state.userActions.userId,
+    Object.values(state.todos),
+    state.auth.userId,
     state.visibilityFilter
   )
 });
