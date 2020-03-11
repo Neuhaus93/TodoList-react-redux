@@ -2,9 +2,13 @@ import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 
-import { tryLoggingIn } from "../../actions";
+import { tryLoggingIn, fetchUsers } from "../../actions";
 
 class SignInPage extends React.Component {
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
   renderEmailInput = ({ input }) => {
     return (
       <div className="form-group">
@@ -96,4 +100,4 @@ export default reduxForm(
     validate
   },
   { tryLoggingIn }
-)(connect(mapStateToProps)(SignInPage));
+)(connect(mapStateToProps, { fetchUsers })(SignInPage));

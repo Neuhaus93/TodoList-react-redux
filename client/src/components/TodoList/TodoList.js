@@ -5,7 +5,7 @@ const TodoList = ({ todos, toggleTodo }) => {
   return (
     <div>
       {todos.map(todo => (
-        <Todo key={todo.todoId} {...todo} onClick={() => toggleTodo(todo.todoId)} />
+        <Todo key={todo.id} {...todo} onClick={() => toggleTodo(todo.id)} />
       ))}
     </div>
   );

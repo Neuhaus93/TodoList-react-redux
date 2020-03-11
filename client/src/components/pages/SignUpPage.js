@@ -1,7 +1,8 @@
 import React from "react";
 import { reset, Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
 
-import { addUser } from "../../actions";
+import { addUser, createUser } from "../../actions";
 
 class SignUpPage extends React.Component {
   renderEmailInput = ({ input }) => {
@@ -50,7 +51,7 @@ class SignUpPage extends React.Component {
 
   onSubmit = (formProps, dispatch) => {
     console.log(formProps);
-    dispatch(addUser(formProps));
+    dispatch(createUser(formProps));
     this.props.history.push("/auth/signin");
     dispatch(reset("signUpForm"));
   };
@@ -61,9 +62,9 @@ class SignUpPage extends React.Component {
         <div className="jumbotron">
           <h1 className="display-6 text-center">Fazer Cadastro</h1>
           <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-            <Field name="signUpEmail" component={this.renderEmailInput} />
-            <Field name="signUpUsername" component={this.renderUsernameInput} />
-            <Field name="singUpPassword" component={this.renderPasswordInput} />
+            <Field name="email" component={this.renderEmailInput} />
+            <Field name="userName" component={this.renderUsernameInput} />
+            <Field name="password" component={this.renderPasswordInput} />
             <button type="submit" className="btn btn-primary">
               Cadastre
             </button>
@@ -76,4 +77,4 @@ class SignUpPage extends React.Component {
 
 export default reduxForm({
   form: "signUpForm"
-})(SignUpPage);
+})(connect(null, { createUser })(SignUpPage));

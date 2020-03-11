@@ -81,21 +81,26 @@ const INITIAL_USERS = [
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.TRY_LOGGIN_IN:
-      const validUser = INITIAL_USERS.filter(
-        user => user.email === action.email && user.password === action.password
-      );
-      const userName = validUser.length !== 0 ? validUser[0].userName : null;
-      // const userTodos = validUser.length !== 0 ? validUser[0].todos : null;
-      const userId = validUser.length !== 0 ? validUser[0].userId : null;
-      return validUser.length !== 0
-        ? {
-            ...state,
-            isSignedIn: true,
-            userName: userName,
-            // userTodos: userTodos,
-            userId: userId
-          }
-        : state;
+      return {
+        ...state,
+        isSignedIn: true,
+        userName: action.userName,
+        userId: action.userId
+      };
+
+    // const validUser = INITIAL_USERS.filter(
+    //   user => user.email === action.email && user.password === action.password
+    // );
+    // const userName = validUser.length !== 0 ? validUser[0].userName : null;
+    // const userId = validUser.length !== 0 ? validUser[0].userId : null;
+    // return validUser.length !== 0
+    //   ? {
+    //       ...state,
+    //       isSignedIn: true,
+    //       userName: userName,
+    //       userId: userId
+    //     }
+    //   : state;
 
     case ActionTypes.TRY_LOGGIN_OUT:
       return { ...state, isSignedIn: false, userName: null, userId: null };
